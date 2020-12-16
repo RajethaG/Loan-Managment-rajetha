@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ClientManager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="Int64" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CropLoan">
+    <Key>
+      <PropertyRef Name="LoanAccountNo" />
+    </Key>
+    <Property Name="LoanAccountNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanId" Type="Int32" Nullable="false" />
+    <Property Name="AccountNo" Type="Int64" Nullable="false" />
+    <Property Name="EMI" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="LoanAmount" Type="Int32" Nullable="false" />
+    <Property Name="LandArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Acres" Type="Int32" Nullable="false" />
+    <Property Name="Duration" Type="Byte" Nullable="false" />
+    <Property Name="CropName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AnnualIncome" Type="Int32" Nullable="false" />
+    <Property Name="PrimarySecurity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CollateralSecurity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GuarantorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GuarantorIncome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LandSurveyNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PayLoans" Relationship="Self.FK_PayLoan_CropLoan" FromRole="CropLoan" ToRole="PayLoan" />
+  </EntityType>
+  <EntityType Name="EducationLoan">
+    <Key>
+      <PropertyRef Name="LoanAccountNo" />
+    </Key>
+    <Property Name="LoanAccountNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanId" Type="Int32" Nullable="false" />
+    <Property Name="CollegeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CourseDuration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoanAmount" Type="Int32" Nullable="false" />
+    <Property Name="GuardianName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GuardianIncome" Type="Int32" Nullable="false" />
+    <Property Name="GuardianMobile" Type="Int64" Nullable="false" />
+    <Property Name="AccountNo" Type="Int64" Nullable="false" />
+    <Property Name="EMI" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="LoanProgram" Relationship="Self.FK_EducationLoan_LoanProgram" FromRole="EducationLoan" ToRole="LoanProgram" />
+    <NavigationProperty Name="User" Relationship="Self.FK_EducationLoan_User" FromRole="EducationLoan" ToRole="User" />
+    <NavigationProperty Name="PayLoans" Relationship="Self.FK_PayLoan_EducationLoan" FromRole="EducationLoan" ToRole="PayLoan" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InterviewDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="HomeLoan">
+    <Key>
+      <PropertyRef Name="LoanAccountNo" />
+    </Key>
+    <Property Name="LoanAccountNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanId" Type="Int32" Nullable="false" />
+    <Property Name="PlotAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AnnualIncome" Type="Int32" Nullable="false" />
+    <Property Name="MonthlyExpenditure" Type="Int32" Nullable="false" />
+    <Property Name="LoanAmount" Type="Int32" Nullable="false" />
+    <Property Name="Duration" Type="Byte" Nullable="false" />
+    <Property Name="AccountNo" Type="Int64" Nullable="false" />
+    <Property Name="EMI" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="LoanProgram" Relationship="Self.FK_HomeLoan_LoanProgram" FromRole="HomeLoan" ToRole="LoanProgram" />
+    <NavigationProperty Name="User" Relationship="Self.FK_HomeLoan_User" FromRole="HomeLoan" ToRole="User" />
+    <NavigationProperty Name="PayLoans" Relationship="Self.FK_PayLoan_HomeLoan" FromRole="HomeLoan" ToRole="PayLoan" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InterviewDate" Type="DateTime" Precision="3" />
+    <Property Name="FinalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LoanProgram">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Interest" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EducationLoans" Relationship="Self.FK_EducationLoan_LoanProgram" FromRole="LoanProgram" ToRole="EducationLoan" />
+    <NavigationProperty Name="HomeLoans" Relationship="Self.FK_HomeLoan_LoanProgram" FromRole="LoanProgram" ToRole="HomeLoan" />
+  </EntityType>
+  <EntityType Name="PayLoan">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanAccountNo" Type="Int64" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Balance" Type="Int32" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+    <Property Name="TotalLoan" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CropLoan" Relationship="Self.FK_PayLoan_CropLoan" FromRole="PayLoan" ToRole="CropLoan" />
+    <NavigationProperty Name="EducationLoan" Relationship="Self.FK_PayLoan_EducationLoan" FromRole="PayLoan" ToRole="EducationLoan" />
+    <NavigationProperty Name="HomeLoan" Relationship="Self.FK_PayLoan_HomeLoan" FromRole="PayLoan" ToRole="HomeLoan" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="AccountNo" />
+    </Key>
+    <Property Name="AccountNo" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PermanentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CurrentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="Int64" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EducationLoans" Relationship="Self.FK_EducationLoan_User" FromRole="User" ToRole="EducationLoan" />
+    <NavigationProperty Name="HomeLoans" Relationship="Self.FK_HomeLoan_User" FromRole="User" ToRole="HomeLoan" />
+  </EntityType>
+  <Association Name="FK_PayLoan_CropLoan">
+    <End Role="CropLoan" Type="Self.CropLoan" Multiplicity="1" />
+    <End Role="PayLoan" Type="Self.PayLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CropLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Principal>
+      <Dependent Role="PayLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EducationLoan_LoanProgram">
+    <End Role="LoanProgram" Type="Self.LoanProgram" Multiplicity="1" />
+    <End Role="EducationLoan" Type="Self.EducationLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoanProgram">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EducationLoan">
+        <PropertyRef Name="LoanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EducationLoan_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="EducationLoan" Type="Self.EducationLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="AccountNo" />
+      </Principal>
+      <Dependent Role="EducationLoan">
+        <PropertyRef Name="AccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PayLoan_EducationLoan">
+    <End Role="EducationLoan" Type="Self.EducationLoan" Multiplicity="1" />
+    <End Role="PayLoan" Type="Self.PayLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EducationLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Principal>
+      <Dependent Role="PayLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HomeLoan_LoanProgram">
+    <End Role="LoanProgram" Type="Self.LoanProgram" Multiplicity="1" />
+    <End Role="HomeLoan" Type="Self.HomeLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoanProgram">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HomeLoan">
+        <PropertyRef Name="LoanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HomeLoan_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="HomeLoan" Type="Self.HomeLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="AccountNo" />
+      </Principal>
+      <Dependent Role="HomeLoan">
+        <PropertyRef Name="AccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PayLoan_HomeLoan">
+    <End Role="HomeLoan" Type="Self.HomeLoan" Multiplicity="1" />
+    <End Role="PayLoan" Type="Self.PayLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HomeLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Principal>
+      <Dependent Role="PayLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LMSEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ClientManagers" EntityType="Self.ClientManager" />
+    <EntitySet Name="CropLoans" EntityType="Self.CropLoan" />
+    <EntitySet Name="EducationLoans" EntityType="Self.EducationLoan" />
+    <EntitySet Name="HomeLoans" EntityType="Self.HomeLoan" />
+    <EntitySet Name="LoanPrograms" EntityType="Self.LoanProgram" />
+    <EntitySet Name="PayLoans" EntityType="Self.PayLoan" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_PayLoan_CropLoan" Association="Self.FK_PayLoan_CropLoan">
+      <End Role="CropLoan" EntitySet="CropLoans" />
+      <End Role="PayLoan" EntitySet="PayLoans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EducationLoan_LoanProgram" Association="Self.FK_EducationLoan_LoanProgram">
+      <End Role="LoanProgram" EntitySet="LoanPrograms" />
+      <End Role="EducationLoan" EntitySet="EducationLoans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EducationLoan_User" Association="Self.FK_EducationLoan_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="EducationLoan" EntitySet="EducationLoans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PayLoan_EducationLoan" Association="Self.FK_PayLoan_EducationLoan">
+      <End Role="EducationLoan" EntitySet="EducationLoans" />
+      <End Role="PayLoan" EntitySet="PayLoans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HomeLoan_LoanProgram" Association="Self.FK_HomeLoan_LoanProgram">
+      <End Role="LoanProgram" EntitySet="LoanPrograms" />
+      <End Role="HomeLoan" EntitySet="HomeLoans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HomeLoan_User" Association="Self.FK_HomeLoan_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="HomeLoan" EntitySet="HomeLoans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PayLoan_HomeLoan" Association="Self.FK_PayLoan_HomeLoan">
+      <End Role="HomeLoan" EntitySet="HomeLoans" />
+      <End Role="PayLoan" EntitySet="PayLoans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

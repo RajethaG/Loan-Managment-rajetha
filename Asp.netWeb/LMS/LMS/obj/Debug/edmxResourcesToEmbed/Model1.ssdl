@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ClientManager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="bigint" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CropLoan">
+    <Key>
+      <PropertyRef Name="LoanAccountNo" />
+    </Key>
+    <Property Name="LoanAccountNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoanId" Type="int" Nullable="false" />
+    <Property Name="AccountNo" Type="bigint" Nullable="false" />
+    <Property Name="EMI" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LoanAmount" Type="int" Nullable="false" />
+    <Property Name="LandArea" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Acres" Type="int" Nullable="false" />
+    <Property Name="Duration" Type="tinyint" Nullable="false" />
+    <Property Name="CropName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AnnualIncome" Type="int" Nullable="false" />
+    <Property Name="PrimarySecurity" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CollateralSecurity" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="GuarantorName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="GuarantorIncome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LandSurveyNumber" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EducationLoan">
+    <Key>
+      <PropertyRef Name="LoanAccountNo" />
+    </Key>
+    <Property Name="LoanAccountNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoanId" Type="int" Nullable="false" />
+    <Property Name="CollegeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseDuration" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoanAmount" Type="int" Nullable="false" />
+    <Property Name="GuardianName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Relationship" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="GuardianIncome" Type="int" Nullable="false" />
+    <Property Name="GuardianMobile" Type="bigint" Nullable="false" />
+    <Property Name="AccountNo" Type="bigint" Nullable="false" />
+    <Property Name="EMI" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="InterviewDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="HomeLoan">
+    <Key>
+      <PropertyRef Name="LoanAccountNo" />
+    </Key>
+    <Property Name="LoanAccountNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoanId" Type="int" Nullable="false" />
+    <Property Name="PlotAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Occupation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AnnualIncome" Type="int" Nullable="false" />
+    <Property Name="MonthlyExpenditure" Type="int" Nullable="false" />
+    <Property Name="LoanAmount" Type="int" Nullable="false" />
+    <Property Name="Duration" Type="tinyint" Nullable="false" />
+    <Property Name="AccountNo" Type="bigint" Nullable="false" />
+    <Property Name="EMI" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="InterviewDate" Type="datetime" />
+    <Property Name="FinalStatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LoanProgram">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoanType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Interest" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PayLoan">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoanAccountNo" Type="bigint" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="Balance" Type="int" />
+    <Property Name="PaymentDate" Type="date" />
+    <Property Name="TotalLoan" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="AccountNo" />
+    </Key>
+    <Property Name="AccountNo" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Religion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PAN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PermanentAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CurrentAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="bigint" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EducationLoan_LoanProgram">
+    <End Role="LoanProgram" Type="Self.LoanProgram" Multiplicity="1" />
+    <End Role="EducationLoan" Type="Self.EducationLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoanProgram">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EducationLoan">
+        <PropertyRef Name="LoanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EducationLoan_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="EducationLoan" Type="Self.EducationLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="AccountNo" />
+      </Principal>
+      <Dependent Role="EducationLoan">
+        <PropertyRef Name="AccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HomeLoan_LoanProgram">
+    <End Role="LoanProgram" Type="Self.LoanProgram" Multiplicity="1" />
+    <End Role="HomeLoan" Type="Self.HomeLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoanProgram">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HomeLoan">
+        <PropertyRef Name="LoanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HomeLoan_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="HomeLoan" Type="Self.HomeLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="AccountNo" />
+      </Principal>
+      <Dependent Role="HomeLoan">
+        <PropertyRef Name="AccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PayLoan_CropLoan">
+    <End Role="CropLoan" Type="Self.CropLoan" Multiplicity="1" />
+    <End Role="PayLoan" Type="Self.PayLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CropLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Principal>
+      <Dependent Role="PayLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PayLoan_EducationLoan">
+    <End Role="EducationLoan" Type="Self.EducationLoan" Multiplicity="1" />
+    <End Role="PayLoan" Type="Self.PayLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EducationLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Principal>
+      <Dependent Role="PayLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PayLoan_HomeLoan">
+    <End Role="HomeLoan" Type="Self.HomeLoan" Multiplicity="1" />
+    <End Role="PayLoan" Type="Self.PayLoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HomeLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Principal>
+      <Dependent Role="PayLoan">
+        <PropertyRef Name="LoanAccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LMSModelStoreContainer">
+    <EntitySet Name="ClientManager" EntityType="Self.ClientManager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CropLoan" EntityType="Self.CropLoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EducationLoan" EntityType="Self.EducationLoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeLoan" EntityType="Self.HomeLoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoanProgram" EntityType="Self.LoanProgram" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PayLoan" EntityType="Self.PayLoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EducationLoan_LoanProgram" Association="Self.FK_EducationLoan_LoanProgram">
+      <End Role="LoanProgram" EntitySet="LoanProgram" />
+      <End Role="EducationLoan" EntitySet="EducationLoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EducationLoan_User" Association="Self.FK_EducationLoan_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="EducationLoan" EntitySet="EducationLoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HomeLoan_LoanProgram" Association="Self.FK_HomeLoan_LoanProgram">
+      <End Role="LoanProgram" EntitySet="LoanProgram" />
+      <End Role="HomeLoan" EntitySet="HomeLoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HomeLoan_User" Association="Self.FK_HomeLoan_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="HomeLoan" EntitySet="HomeLoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PayLoan_CropLoan" Association="Self.FK_PayLoan_CropLoan">
+      <End Role="CropLoan" EntitySet="CropLoan" />
+      <End Role="PayLoan" EntitySet="PayLoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PayLoan_EducationLoan" Association="Self.FK_PayLoan_EducationLoan">
+      <End Role="EducationLoan" EntitySet="EducationLoan" />
+      <End Role="PayLoan" EntitySet="PayLoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PayLoan_HomeLoan" Association="Self.FK_PayLoan_HomeLoan">
+      <End Role="HomeLoan" EntitySet="HomeLoan" />
+      <End Role="PayLoan" EntitySet="PayLoan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
